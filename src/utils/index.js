@@ -28,7 +28,9 @@ export async function compare(raw, hashed) {
 
 // Configure email transporter
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'stmp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
@@ -37,7 +39,7 @@ const transporter = nodemailer.createTransport({
 
 export async function sendResetLink(toEmail, link) {
   await transporter.sendMail({
-    from: '"KopaPath" <no-reply@yourapp.com>',
+    from: 'no-reply@kopapath.com>',
     to: toEmail,
     subject: 'Reset Your Secret',
     html: `
