@@ -17,7 +17,9 @@ const reset_secret = async (req, res, next) => {
       [token, user.id]
     );
 
+    console.log('sending email start')
     await sendResetLink(user.email, `http://localhost:5000/auth/reset?token=${token}`);
+    console.log('sending email done')
     res.status(200).json({ msg: 'Reset link sent to your email' });
     await sendMsg(user.id, 'Secret reset was requested. If it was not you, change secret now.');
   } catch (err) { next(err); }
