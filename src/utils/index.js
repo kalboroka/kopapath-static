@@ -28,16 +28,11 @@ export async function compare(raw, hashed) {
 
 // Configure email transporter
 const transporter = nodemailer.createTransport({
-  host: 'localhost', //'smtp.gmail.com',
-  port: 1025, //587,
-  ignoreTLS: true,
-  /*
-  secure: false,
+  service: 'gmail',
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS
   }
-  */
 });
 
 export async function sendResetLink(toEmail, link) {

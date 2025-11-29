@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 secureApp(app);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 const paths = [
   /^\/(about|account|admin|fqas|messages)?$/,
@@ -24,7 +24,7 @@ const paths = [
 ];
 app.get(paths, (req, res, next) => {
   try {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
   } catch(err) {
     next(err)
   }
@@ -44,7 +44,8 @@ app.use((err, req, res, next) => {
   next()
 });
 
-app.listen(process.env.PORT, () => {
-  console.log('server started');
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
   migDb(); // db migrstions
 });
