@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 secureApp(app);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 const paths = [
   /^\/(about|account|admin|fqas|messages)?$/,
@@ -24,7 +24,7 @@ const paths = [
 ];
 app.get(paths, (req, res, next) => {
   try {
-    res.sendFile(path.join(__dirname, 'public/index.html'));
+    res.sendFile(path.join(__dirname, '../public/index.html'));
   } catch(err) {
     next(err)
   }
