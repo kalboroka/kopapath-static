@@ -1,0 +1,40 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon --env-file .env .",
+    "start": "node --env-file .env .",
+    "build": "echo nothing to build",
+    "lint": "eslint . --ext .js"
+  },
+  "imports": {
+    "#config": "./src/config/index.js",
+    "#utils": "./src/utils/index.js",
+    "#middlewares": "./src/middlewares/index.js",
+    "#routes/admin": "./src/routes/admin/index.js",
+    "#routes/auth": "./src/routes/auth/index.js",
+    "#routes/loans": "./src/routes/loans/index.js",
+    "#routes/messages": "./src/routes/messages/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "compression": "^1.8.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^7.0.10",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "globals": "^14.0.0",
+    "nodemon": "^3.1.10"
+  }
+}
