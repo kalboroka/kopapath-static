@@ -28,7 +28,7 @@ export async function compare(raw, hashed) {
 
 // Configure email transporter
 const transporter = nodemailer.createTransport({
-  host: 'stmp.gmail.com',
+  host: 'smtp.gmail.com',
   port: 465,
   secure: true,
   auth: {
