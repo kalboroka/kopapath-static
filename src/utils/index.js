@@ -39,7 +39,7 @@ const transporter = nodemailer.createTransport({
 
 export async function sendResetLink(toEmail, link) {
   await transporter.sendMail({
-    from: 'no-reply@kopapath.com>',
+    from: 'pathkopa@gmail.com',
     to: toEmail,
     subject: 'Reset Your Secret',
     html: `
