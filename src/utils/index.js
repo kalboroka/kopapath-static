@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
@@ -26,19 +26,10 @@ export async function compare(raw, hashed) {
   return await bcrypt.compare(raw, hashed);
 }
 
-// Configure email transporter
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function sendResetLink(toEmail, link) {
-  await transporter.sendMail({
+  await resend.emails.send({
     from: 'pathkopa@gmail.com',
     to: toEmail,
     subject: 'Reset Your Secret',
